@@ -28,8 +28,8 @@ By incorporating these features, the bot provides a wide variety of functions to
 One of the features of this bot is its function as a phone book. It is a useful tool for storing names and phone numbers.
 
 Available commands:<br>
-  /start, /commands - All commands list
-  /my_id - Send you your ID in Telegram
+  /start, /commands - All commands list<br>
+  /my_id - Send you your ID in Telegram<br>
   /weather <city> - Get the weather for a specific city
   /currency - Returns the cost of EUR and USD in UAH
   /echo <message> - Echo back the provided message
