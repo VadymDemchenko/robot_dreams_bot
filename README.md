@@ -30,12 +30,12 @@ One of the features of this bot is its function as a phone book. It is a useful 
 Available commands:<br>
   /start, /commands - All commands list<br>
   /my_id - Send you your ID in Telegram<br>
-  /weather <city> - Get the weather for a specific city
-  /currency - Returns the cost of EUR and USD in UAH
-  /echo <message> - Echo back the provided message
-  /add_contact <name> <phone> - Insert a new contact in contacts book
-  /get_contacts - Show all contacts from contacts book
-  /delete_contact <name> - Delete contact from contacts book
+  /weather <city> - Get the weather for a specific city<br>
+  /currency - Returns the cost of EUR and USD in UAH<br>
+  /echo <message> - Echo back the provided message<br>
+  /add_contact <name> <phone> - Insert a new contact in contacts book<br>
+  /get_contacts - Show all contacts from contacts book<br>
+  /delete_contact <name> - Delete contact from contacts book<br>
 
 Link on a landing of the bot:
 https://vadymdemchenko.github.io/
