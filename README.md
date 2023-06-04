@@ -17,18 +17,24 @@ Request the latest exchange rates.
 The bot will obtain the latest exchange rate information from a reliable source.
 Easily obtain accurate, real-time currency conversion rates.
 
+Random GIF images:
+
+Requesting random GIF images can add fun and spontaneity to a conversation.
+Bots can retrieve random GIFs from GIPHY to share fun visuals with friends and liven up the chat.
+
 Obtain a Telegram ID:
 
 Get your unique Telegram ID using a dedicated command.
 When you execute the command, the bot will identify your Telegram ID and provide it to you.
 You can easily access your Telegram ID for a variety of uses, including user identification and integration with other services.
 
-By incorporating these features, the bot provides a wide variety of functions to enrich your Telegram experience. Whether you need to check the weather, convert currency, or retrieve your Telegram ID, this bot can do it all, bringing convenience and efficiency to your interactions with Telegram!
+By incorporating these features, the bot provides a wide variety of functions to enrich your Telegram experience. Whether you need to check the weather, convert currency, get a random GIf or retrieve your Telegram ID, this bot can do it all, bringing convenience and efficiency to your interactions with Telegram!
 
-One of the features of this bot is its function as a phone book. It is a useful tool for storing names and phone numbers.
+
 
 Available commands:<br>
   /start, /commands - All commands list<br>
+  /gif - Send you a random GIF from GIPHY service<br>
   /my_id - Send you your ID in Telegram<br>
   /weather <city> - Get the weather for a specific city<br>
   /currency - Returns the cost of EUR and USD in UAH<br>
