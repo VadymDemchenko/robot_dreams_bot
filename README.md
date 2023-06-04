@@ -45,3 +45,6 @@ https://t.me/Slev1n_bot
 
 Link on a backend part of the bot:
 https://github.com/VadymDemchenko/robot_dreams_bot/tree/main/robot_bot
+  
+  
+P.S. use file setWebhook.py first. It will ask you about link for webhook (ngrok link for example) and after webhook will be setten you can start run.py file that will launch bot.
