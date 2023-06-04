@@ -1,6 +1,7 @@
 import requests
 from .weather_services import WeatherService, WeatherServiceException
 from .contactbook_services import ContactService, DuplicateContactException, InvalidContactException
+from .gif_service import get_random_gif_url
 import json
 from pprint import pprint
 import os
@@ -22,6 +23,14 @@ class User:
         self.username = username
 
 
+def send_gif(chat_id, gif_url):
+    data = {
+        'chat_id': chat_id,
+        'animation': gif_url
+    }
+    requests.post(f'{TG_BASE_URL}{TOKEN}/sendAnimation', json=data)
+
+
 class TelegramHandler:
     user = None
 
@@ -39,6 +48,27 @@ class TelegramHandler:
             'text': text
         }
         requests.post(f'{TG_BASE_URL}{TOKEN}/sendMessage', json=data)
+
+
+class CommandsHandler(TelegramHandler):
+    def __init__(self, data):
+        self.user = User(**data.get('from'))
+        self.text = data.get('text')
+
+    def handle(self):
+        commands = [
+            '/start, /commands - All commands list',
+            '/gif - Send you a random GIF from GIPHY service',
+            '/my_id - Send you your ID in Telegram',
+            '/weather <city> - Get the weather for a specific city',
+            '/currency - Returns the cost of EUR and USD in UAH',
+            '/echo <message> - Echo back the provided message',
+            '/add_contact <name> <phone> - Insert a new contact in contacts book',
+            '/get_contacts - Show all contacts from contacts book',
+            '/delete_contact <name> - Delete contact from contacts book'
+        ]
+        command_list = "\n".join(commands)
+        self.send_message(f"Available commands:\n{command_list}")
 
 
 class MessageHandler(TelegramHandler):
@@ -97,26 +127,6 @@ class EchoHandler(TelegramHandler):
     def handle(self):
         echo_text = self.text[6:]
         self.send_message(echo_text)
-
-
-class CommandsHandler(TelegramHandler):
-    def __init__(self, data):
-        self.user = User(**data.get('from'))
-        self.text = data.get('text')
-
-    def handle(self):
-        commands = [
-            '/start, /commands - All commands list',
-            '/my_id - Send you your ID in Telegram',
-            '/weather <city> - Get the weather for a specific city',
-            '/currency - Returns the cost of EUR and USD in UAH',
-            '/echo <message> - Echo back the provided message',
-            '/add_contact <name> <phone> - Insert a new contact in contacts book',
-            '/get_contacts - Show all contacts from contacts book',
-            '/delete_contact <name> - Delete contact from contacts book'
-        ]
-        command_list = "\n".join(commands)
-        self.send_message(f"Available commands:\n{command_list}")
 
 
 class ContactHandler(TelegramHandler):
@@ -207,4 +217,15 @@ class CurrencyHandler(TelegramHandler):
             except requests.RequestException as e:
                 print("An error occurred:", str(e))
                 return "Sorry, something went wrong. Please try again later"
+
+
+class GifHandler(TelegramHandler):
+    def __init__(self, data):
+        self.user = User(**data.get('from'))
+
+    def handle(self):
+        chat_id = self.user.id
+        gif_url = get_random_gif_url()
+        send_gif(chat_id, gif_url)
+
 
