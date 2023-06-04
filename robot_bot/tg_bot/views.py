@@ -1,6 +1,6 @@
 from . import app
 from flask import request
-from .handlers import MessageHandler, CallbackHandler, EchoHandler, CommandsHandler, ContactHandler, MyIdHandler, CurrencyHandler
+from .handlers import MessageHandler, CallbackHandler, EchoHandler, CommandsHandler, ContactHandler, MyIdHandler, CurrencyHandler, GifHandler
 from pprint import pprint
 
 
@@ -23,6 +23,8 @@ def hello():
                 handler = MyIdHandler(message)
             elif text == '/currency':
                 handler = CurrencyHandler(message)
+            elif text == '/gif':
+                handler = GifHandler(message)
     pprint(request.json)
     handler.handle()
     return 'ok'
